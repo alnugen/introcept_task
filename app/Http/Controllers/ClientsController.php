@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CSVModel\Client;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 
-use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
@@ -37,7 +37,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -46,9 +46,20 @@ class ClientsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-        //
+        $this->client->insert([
+            $request->fullname,
+            $request->gender,
+            $request->phone,
+            $request->email,
+            $request->address,
+            $request->nationality,
+            $request->dob,
+            $request->education,
+            $request->mode_of_contact,
+        ]);
+        return redirect()->route('clients.index')->with('message', 'Client added successfully.');
     }
 
     /**

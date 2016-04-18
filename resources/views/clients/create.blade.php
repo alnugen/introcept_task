@@ -18,15 +18,15 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label">Gender</label>
 			<div class="col-md-4">
-				<div class="radio">
-					<label>
-						<input type="radio" name="gender" id="gender" value="male" checked="checked" /> Male
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input type="radio" name="gender" id="gender" value="Female" /> Female
-					</label>
+				<div class="input-group">
+					<div class="radio">
+						<label>
+							<input type="radio" name="gender" id="gender" value="Male" /> Male
+						</label>
+						<label>
+							<input type="radio" name="gender" id="gender" value="Female" /> Female
+						</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -148,12 +148,59 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 <script type="text/javascript">
 	$(function () {
 		$('#datepicker').datepicker();
 	});
 </script>
+<script>
+	
+	$().ready(function() {
+		
+		$("#client_form").validate({
+			rules: {
+				fullname: "required", 
+				gender: "required", 
+				phone: "required",
+				email:{
+					required: true,
+					email: true,
+				},
+				address: "required",
+				nationality: "required",
+				education: "required",
+				dob: "required",
+			},
+			messages: {
+				fullname: "Please enter your fullname",
+				gender: "Please select your gender"
+				phone: "Please enter your phone",
+				email: "Please enter your email",
+				address: "Please enter your address",
+				nationality: "Please enter your nationality",
+				education: "Please select your education",
+				dob: "Please enter your date of birth",
 
+			},
+			highlight: function(element) {
+        		$(element).closest('.form-group').addClass('has-error');
+    		},
+    		unhighlight: function(element) {
+        		$(element).closest('.form-group').removeClass('has-error');
+    		},
+		    errorElement: 'span',
+		    errorClass: 'help-block',
+		    errorPlacement: function(error, element) {
+		        if(element.parent('.input-group').length) {
+		            error.insertAfter(element.parent());
+		        } else {
+		            error.insertAfter(element.parent().parent());
+		        }
+    		}
+		});
+	});
+</script>
 
 
 @stop

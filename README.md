@@ -1,6 +1,7 @@
 Overview
 -
 This is simple application for indexing and adding clients detail using **Laravel framework**. It uses CSV to store data.
+[![Code Climate](https://codeclimate.com/github/alnugen/introcept_task/badges/gpa.svg)](https://codeclimate.com/github/alnugen/introcept_task)
 
 Code Snippet
 -

@@ -90,7 +90,7 @@
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
 					<select name="education" id="education" class="form-control selectpicker" >
-						<option value=" " >Please select your education level</option>
+						<option value="" >Please select your education level</option>
 						<option>S.L.C.</option>
 						<option>+2</option>
 						<option>Bachelor's</option>
@@ -174,7 +174,7 @@
 			},
 			messages: {
 				fullname: "Please enter your fullname",
-				gender: "Please select your gender"
+				gender: "Please select your gender",
 				phone: "Please enter your phone",
 				email: "Please enter your email",
 				address: "Please enter your address",
